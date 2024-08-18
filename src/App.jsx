@@ -1,9 +1,8 @@
-import { useState } from "react";
-
+import Login from "../src/features/identity/components/login";
 function App() {
   return (
     <>
-      <p>پلتفرم آموزش آنلاین</p>
+      <Login />
     </>
   );
 }
