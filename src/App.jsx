@@ -1,8 +1,9 @@
-import Login from "../src/features/identity/components/login";
+import { RouterProvider } from "react-router-dom";
+import router from "./router.jsx";
 function App() {
   return (
     <>
-      <Login />
+      <RouterProvider router={router} />
     </>
   );
 }
