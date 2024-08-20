@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import { httpService } from "../../../core/http-service/http-service";
 import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
 
 const Register = () => {
   const {
@@ -18,6 +19,8 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm();
+
+  const { t } = useTranslation();
 
   const submitForm = useSubmit();
 
@@ -146,7 +149,9 @@ const Register = () => {
               {routeErrors && (
                 <div className="alert alert-danger text-danger p-2 mt-3">
                   {routeErrors.response?.data.map((error) => (
-                    <p className="mb-0" key={error.id}>{error.description}</p>
+                    <p className="mb-0" key={error.id}>
+                      {error.description}
+                    </p>
                   ))}
                 </div>
               )}
