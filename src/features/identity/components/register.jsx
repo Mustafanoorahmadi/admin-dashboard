@@ -8,7 +8,7 @@ import {
   useSubmit,
   useRouteError,
 } from "react-router-dom";
-import { httpService } from "../../../core/http-service/http-service";
+import { httpService } from "@core/http-service/http-service";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
@@ -32,11 +32,10 @@ const Register = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state !== "idle";
 
+  const routeErrors = useRouteError();
   const isSuccessOperation = useActionData();
 
   const navigate = useNavigate();
-
-  const routeErrors = useRouteError();
 
   useEffect(() => {
     if (isSuccessOperation) {
@@ -50,7 +49,7 @@ const Register = () => {
       <div className="text-center mt-4">
         <img src={logo} style={{ height: "100px" }} />
         <h1 className="h2">{t("register.title")}</h1>
-        <p className="lead">{t("register.introMessage")} </p>
+        <p className="lead">{t("register.introMessage")}</p>
         <p className="lead">{t("register.alreadyRegistered")}</p>
         <Link to="/login" className="me-2">
           {t("register.signin")}
@@ -74,7 +73,7 @@ const Register = () => {
                 />
                 {errors.mobile && errors.mobile.type === "required" && (
                   <p className="text-danger small fw-bolder mt-1">
-                    {errors.mobile?.message}
+                    {t("register.validation.mobileRequired")}
                   </p>
                 )}
                 {errors.mobile &&
@@ -96,7 +95,7 @@ const Register = () => {
                 />
                 {errors.password && errors.password.type === "required" && (
                   <p className="text-danger small fw-bolder mt-1">
-                    {errors.password?.message}
+                    {t("register.validation.passwordRequired")}
                   </p>
                 )}
               </div>
@@ -122,13 +121,13 @@ const Register = () => {
                 {errors.confirmPassword &&
                   errors.confirmPassword.type === "required" && (
                     <p className="text-danger small fw-bolder mt-1">
-                      {errors.confirmPassword?.message}
+                      {t("register.validation.repeatPasswordRequired")}
                     </p>
                   )}
                 {errors.confirmPassword &&
                   errors.confirmPassword.type === "validate" && (
                     <p className="text-danger small fw-bolder mt-1">
-                      {errors.confirmPassword?.message}
+                      {t("register.validation.notMatching")}
                     </p>
                   )}
               </div>
@@ -163,11 +162,11 @@ const Register = () => {
   );
 };
 
-export default Register;
-
 export async function registerAction({ request }) {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
   const response = await httpService.post("/Users", data);
   return response.status === 200;
 }
+
+export default Register;
