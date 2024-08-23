@@ -2,16 +2,12 @@ import { useAppContext } from "../context/app/app-context";
 
 const ChangeTheme = () => {
     const {theme, changeTheme} = useAppContext();
-
-  const changeThemeHandler = () => {
-    changeTheme(theme === "light" ? "dark" : "light");
-  };
+    const changeThemeHandler = () => {
+        changeTheme(theme === 'light' ? 'dark' : 'light');
+    }
   return (
-    <button
-      className="theme-toggle"
-      data-theme={theme}
-      onClick={changeThemeHandler}
-    >
+    <button className="theme-toggle" data-theme={theme} onClick={changeThemeHandler}>
+
       <svg
         className="sun-and-moon"
         aria-hidden="true"

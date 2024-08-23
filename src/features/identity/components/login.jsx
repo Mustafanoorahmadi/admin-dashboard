@@ -34,24 +34,27 @@ const Login = () => {
       <div className="text-center mt-4">
         <img src={logo} style={{ height: "100px" }} />
         <h1 className="h2">{t("login.title")}</h1>
-        <p className="lead">{t("login.introMessage")} </p>
-        <p className="lead">{t("login.areNotRegistered")}</p>
-        <Link to="/register" className="me-2">
-          {" "}
-          {t("login.register")}{" "}
-        </Link>
+        <p className="lead">{t("login.introMessage")}</p>
+        <p className="lead">
+          {t("login.areNotRegistered")}
+          <Link to="/register" className="me-2">
+            {" "}
+            {t("login.register")}{" "}
+          </Link>
+        </p>
       </div>
+
       <div className="card">
         <div className="card-body">
           <div className="m-sm-4">
             <form onSubmit={handleSubmit(onSubmit)}>
-              <div className="md-3">
-                <label className="form-label"> {t("login.mobile")}</label>
+              <div className="mb-3">
+                <label className="form-label">{t("login.mobile")}</label>
                 <input
                   {...register("mobile", {
                     required: true,
-                    maxLength: 11,
                     minLength: 11,
+                    maxLength: 11,
                   })}
                   className={`form-control form-control-lg ${
                     errors.mobile && "is-invalid"
@@ -66,12 +69,12 @@ const Login = () => {
                   (errors.mobile.type === "minLength" ||
                     errors.mobile.type === "maxLength") && (
                     <p className="text-danger small fw-bolder mt-1">
-                      {t("login.validation.mobileLength")}{" "}
+                      {t("login.validation.mobileLength")}
                     </p>
                   )}
               </div>
               <div className="mb-3">
-                <label className="form-label">{t("login.password")} </label>
+                <label className="form-label">{t("login.password")}</label>
                 <input
                   {...register("password", { required: true })}
                   className={`form-control form-control-lg ${
@@ -97,7 +100,7 @@ const Login = () => {
               {routeErrors && (
                 <div className="alert alert-danger text-danger p-2 mt-3">
                   {routeErrors.response?.data.map((error) => (
-                    <p className="mb-0" key={error.id}>
+                    <p className="mb-0">
                       {t(`login.validation.${error.code}`)}
                     </p>
                   ))}
@@ -117,7 +120,7 @@ export async function loginAction({ request }) {
   const response = await httpService.post("/Users/login", data);
   if (response.status === 200) {
     localStorage.setItem("token", response?.data.token);
-    return redirect('/')
+    return redirect("/");
   }
 }
 

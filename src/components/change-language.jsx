@@ -7,8 +7,13 @@ import { useAppContext } from "../context/app/app-context";
 const ChangeLanguage = () => {
   const [show, setShow] = useState(false);
   const ref = useRef();
-
+  
   const { language, changeLanguage } = useAppContext();
+  
+  useEffect(() => {
+    setShow(false);
+  }, [language]);
+
 
   useEffect(() => {
     const checkIfClickOutside = (e) => {

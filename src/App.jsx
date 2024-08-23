@@ -17,7 +17,6 @@ function App() {
       head.removeChild(link);
     };
   }, [theme]);
-
   return (
     <>
       <RouterProvider router={router} />
