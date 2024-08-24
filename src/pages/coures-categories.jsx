@@ -15,7 +15,9 @@ const CourseCategories = () => {
           fallback={<p className="text-info">در حال دریافت اطلاعات...</p>}
         >
           <Await resolve={data.categories}>
-            {(loadedCategorise) => <CategoryList courses={loadedCategorise} />}
+            {(loadedCategorise) => (
+              <CategoryList categories={loadedCategorise} />
+            )}
           </Await>
         </Suspense>
       </div>
@@ -23,14 +25,19 @@ const CourseCategories = () => {
   );
 };
 
-export async function categoriesLoader() {
+export async function categoriesLoader({ request }) {
   return defer({
-    categories: loadCategories(),
+    categories: loadCategories(request),
   });
 }
 
-export const loadCategories = async () => {
-  const response = await httpInterceptedService.get("/CourseCategory/sieve");
+const loadCategories = async (request) => {
+  const page = new URL(request.url).searchParams.get("page") || 1;
+  const pageSize = import.meta.env.VITE_PAGE_SIZE ;
+  let url = "/CourseCategory/sieve";
+
+  url += `?page=${page}&pageSize=${pageSize}`;
+  const response = await httpInterceptedService.get(url);
   return response.data;
 };
 
