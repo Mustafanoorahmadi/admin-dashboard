@@ -19,4 +19,14 @@ httpInterceptedService.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
- );
+);
+
+httpInterceptedService.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    if (error.response.status === 401) {
+      window.location.href = "/login";
+    }
+    return Promise.reject(error);
+  }
+);
