@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import { useAppContext } from "../../context/app/app-context";
 import logo from "@assets/images/logo.svg";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const { showSidebar } = useAppContext();
@@ -9,7 +9,10 @@ const Sidebar = () => {
   return (
     <nav className={`sidebar ${showSidebar ? "collapsed" : ""}`}>
       <div className="sidebar-content">
-        <a className="sidebar-brand d-flex flex-column align-items-center pt-0 mb-0">
+        <a
+          href='/'
+          className="sidebar-brand d-flex flex-column align-items-center pt-0 mb-0"
+        >
           <img src={logo} style={{ height: "80px" }} />
           <p className="mb-0">{t("mainLayout.sidebar.subtitle")}</p>
         </a>
@@ -19,7 +22,12 @@ const Sidebar = () => {
             {t("mainLayout.sidebar.courseManagement")}
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to={"/"}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link"
+              }
+              to={"/"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -27,9 +35,9 @@ const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-video align-middle me-2"
               >
                 <polygon points="23 7 16 12 23 17 23 7"></polygon>
@@ -39,10 +47,15 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.allCourses")}
               </span>
-            </Link>
+            </NavLink>
           </li>
           <li className="sidebar-item">
-            <Link className="sidebar-link" to={"/course-categories"}>
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link"
+              }
+              to={"/course-categories"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -50,9 +63,9 @@ const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-video align-middle me-2"
               >
                 <polygon points="23 7 16 12 23 17 23 7"></polygon>
@@ -62,10 +75,15 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.coursesCategory")}
               </span>
-            </Link>
+            </NavLink>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link"
+              }
+              to={"/course-discounts"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -73,9 +91,9 @@ const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-percent align-middle me-2"
               >
                 <line x1="19" y1="5" x2="5" y2="19"></line>
@@ -86,13 +104,18 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.courseDiscount")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-header fw-bolder fs-lg">
             {t("mainLayout.sidebar.userManagement")}
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link"
+              }
+              to={"/teacher-management"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -100,9 +123,9 @@ const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-user align-middle me-2"
               >
                 <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
@@ -112,10 +135,15 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.teacherManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link"
+              }
+              to={"/student-management"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -123,9 +151,9 @@ const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-users align-middle me-2"
               >
                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
@@ -137,13 +165,18 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.studentManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-header fw-bolder fs-lg">
             {t("mainLayout.sidebar.blogManagement")}
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link"
+              }
+              to={"/tag-management"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -151,9 +184,9 @@ const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-tag align-middle me-2"
               >
                 <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
@@ -163,10 +196,15 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.tagManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? "sidebar-link active" : "sidebar-link "
+              }
+              to={"/post-management"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -174,9 +212,9 @@ const Sidebar = () => {
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 className="feather feather-file-text align-middle me-2"
               >
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -189,7 +227,7 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.postManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

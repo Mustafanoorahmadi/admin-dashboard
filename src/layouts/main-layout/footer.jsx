@@ -1,18 +1,11 @@
-import { useTranslation } from "react-i18next";
-
 const Footer = () => {
-  const { t } = useTranslation();
-
   return (
     <footer className="footer">
       <div className="container-fluid">
         <div className="row">
-          <div className="col-12">
-            <p className="mb-0">
-              © 2023 -{" "}
-              <a href="index.html" className="text-muted">
-                {t("classbon")}
-              </a>
+          <div className="col-6">
+            <p className="mb-0 col-6">
+              <p>© 2024 - Develope by Mustafa 🤍</p>
             </p>
           </div>
         </div>

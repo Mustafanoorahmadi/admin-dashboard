@@ -4,6 +4,6 @@ import { AppProvider } from "./context/app/app-context.jsx";
 
 createRoot(document.getElementById("root")).render(
   <AppProvider>
-    <App />;
+    <App />
   </AppProvider>
 );

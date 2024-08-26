@@ -1,4 +1,3 @@
-import { useLoaderData } from "react-router-dom";
 import Course from "./course";
 
 const CourseList = ({ courses }) => {

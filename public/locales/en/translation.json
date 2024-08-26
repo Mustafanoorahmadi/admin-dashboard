@@ -53,6 +53,16 @@
   },
   "categoryList": {
     "DeleteIsNotPossible": "It is not possible to delete this category",
-    "DuplicateCategory": "The category is duplicate"
+    "DuplicateCategory": "The category is duplicate",
+    "LogOut": "Log out",
+    "addNewCourse": "Add new course",
+    "addNewCategory": "Add new category",
+    "operation": "operation",
+    "name": "Name",
+    "previous": "previous",
+    "next": "next",
+    "nameIsRequired": "Name is required",
+    "recordChanges": "Record changes",
+    "close": "Close"
   }
 }

@@ -11,18 +11,20 @@ const MainLayout = () => {
   }
 
   return (
-    <div className="wrapper" style={{ minHeight: "100h" }}>
-      <Sidebar />
-      <div className="main">
-        <TopNav />
-        <main className="content">
-          <div className="container-fluid p-0">
-            <Outlet />
-          </div>
-        </main>
-        <Footer />
+    <>
+      <div className="wrapper" style={{ minHeight: "100h" }}>
+        <Sidebar />
+        <div className="main">
+          <TopNav />
+          <main className="content">
+            <div className="container-fluid p-0">
+              <Outlet />
+            </div>
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

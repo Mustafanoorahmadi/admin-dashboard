@@ -6,11 +6,13 @@ import Modal from "../components/modal";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import AddOrUpdateCategory from "../features/categories/components/add-or-update-category";
+import { useCategoryContext } from "../features/categories/category-context";
 
 const CourseCategories = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState();
   const [showAddCategory, setShowAddCategory] = useState(false);
+  const { category } = useCategoryContext();
 
   const { t } = useTranslation();
   const data = useLoaderData();
@@ -23,12 +25,12 @@ const CourseCategories = () => {
 
   const handleDeleteCategory = async () => {
     setShowDeleteModal(false);
-    const response = httpInterceptedService.delete(
+    const response = await httpInterceptedService.delete(
       `/CourseCategory/${selectedCategory}`
     );
-
+    console.log(response)
     toast.promise(
-      response,
+      Promise.resolve(response), 
       {
         pending: "در حال حذف ...",
         success: {
@@ -40,12 +42,12 @@ const CourseCategories = () => {
         },
         error: {
           render({ data }) {
-            return t("categoryList" + data.response.data.code);
+            return t("categoryList." + data.response.data.code);
           },
         },
       },
       {
-        position:"bottom-left",
+        position: "bottom-left",
       }
     );
   };
@@ -58,10 +60,10 @@ const CourseCategories = () => {
               className="btn btn-primary fw-bolder mt-n1"
               onClick={() => setShowAddCategory(true)}
             >
-              افزودن دسته جدید
+              {t("categoryList.addNewCategory")}
             </a>
           </div>
-          {showAddCategory && (
+          {(showAddCategory || category) && (
             <AddOrUpdateCategory setShowAddCategory={setShowAddCategory} />
           )}
           <Suspense

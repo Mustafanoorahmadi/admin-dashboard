@@ -1,10 +1,12 @@
 import _ from "lodash";
 import { useSearchParams } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const Pagination = ({
   totalRecords,
   pageSize = import.meta.env.VITE_PAGE_SIZE,
 }) => {
+  const { t } = useTranslation();
   const pages = Math.ceil(totalRecords / pageSize);
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -16,7 +18,7 @@ const Pagination = ({
     }
   };
   const nextPage = () => {
-    if (currentPage > pages) {
+    if (currentPage < pages) {
       setSearchParams({ page: currentPage + 1 });
     }
   };
@@ -30,7 +32,7 @@ const Pagination = ({
           }`}
           onClick={prevPage}
         >
-          <a className="page-link"> قبلی</a>
+          <a className="page-link"> {t("categoryList.previous")}</a>
         </li>
         {_.times(pages, (index) => (
           <li
@@ -47,7 +49,7 @@ const Pagination = ({
           }`}
           onClick={nextPage}
         >
-          <a className="page-link"> بعدی</a>
+          <a className="page-link"> {t("categoryList.next")}</a>
         </li>
       </ul>
     </nav>
