@@ -13,6 +13,7 @@ import CoursesDetails, {
 import { CategoryProvider } from "./features/categories/category-context";
 import NotFound from "./pages/not-found";
 import UnhandledException from "./pages/unhandled-exception";
+import DiscountCourses from "./pages/discount-courses";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
         path: "courses/:id",
         element: <CoursesDetails />,
         loader: courseDetailsLoader,
+      },
+      {
+        path: 'course-discounts',
+        element: <DiscountCourses />,
       },
     ],
   },

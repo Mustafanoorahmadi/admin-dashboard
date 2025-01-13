@@ -111,14 +111,14 @@ export async function categoriesLoader({ request }) {
   });
 }
 
-const loadCategories = async (request) => {
-  const page = new URL(request.url).searchParams.get("page") || 1;
-  const pageSize = import.meta.env.VITE_PAGE_SIZE;
-  let url = "/CourseCategory/sieve";
+// const loadCategories = async (request) => {
+//   const page = new URL(request.url).searchParams.get("page") || 1;
+//   const pageSize = import.meta.env.VITE_PAGE_SIZE;
+//   let url = "/CourseCategory/sieve";
 
-  url += `?page=${page}&pageSize=${pageSize}`;
-  const response = await httpInterceptedService.get(url);
-  return response.data;
-};
+//   url += `?page=${page}&pageSize=${pageSize}`;
+//   const response = await httpInterceptedService?.get(url);
+//   return response.data;
+// };
 
 export default CourseCategories;

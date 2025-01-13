@@ -19,7 +19,7 @@ httpInterceptedService.interceptors.request.use(
     return config;
   },
   (error) => Promise.reject(error)
-);
+);  
 
 httpInterceptedService.interceptors.response.use(
   (response) => response,
